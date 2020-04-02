@@ -152,6 +152,13 @@ sortToStartBtn.addEventListener('click', ()=>{
     sortToStart();  
 });
 btn.addEventListener('click', addToList);
+
+toDo.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        addToList();
+    }
+});
+
 deleteTask();
 deleteValue();
 dragDrop();
