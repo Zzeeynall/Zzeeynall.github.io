@@ -119,8 +119,6 @@ function getDragElement(container, y){
     }, { offset: Number.NEGATIVE_INFINITY }).element
 }
 
-
-
 function dragDrop() {
     const container = document.querySelector('.all-task');
     const draggables = document.querySelectorAll('.task ');
