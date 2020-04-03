@@ -31,15 +31,40 @@ function sortToStart() {
 
     const inputTasks = document.querySelectorAll('[name=to-do]');
     const spreaded = [...inputTasks];
-    const sortedTasks = spreaded.sort(function(){
-        return Math.random() - 0.5;
-      });
+    const sortedTasks = spreaded.sort(() => Math.random() - 0.5);
     const mainBlock = document.querySelector('.all-task');
     mainBlock.innerHTML = '';
     for(let task of sortedTasks){
         createTaskList(mainBlock, task.value);
     }
     dragDrop();
+}
+
+function createTask(task) {
+    const mainBlock = document.querySelector('.all-task');
+    mainBlock.style.display = 'block';
+    createTaskList(mainBlock,task);
+
+    dragDrop();
+
+}
+
+function deleteTask() {
+    const mainBlock = document.querySelector('.all-task');
+    mainBlock.addEventListener('click', function (event) {
+        if (!event.target.matches('.delete-purple')) return
+        event.target.parentNode.remove();
+        if (mainBlock.innerHTML == '') {
+            mainBlock.style.display = 'none';
+        }
+    })
+}
+
+function deleteValue() {
+    const deleteBtn = document.querySelector('.new-task .delete-purple');
+    deleteBtn.addEventListener('click', function(){
+        toDo.value = '';
+    })
 }
 
 function createTaskList(mainBlock,task){
@@ -71,31 +96,6 @@ function createTaskList(mainBlock,task){
     mainBlock.appendChild(blockTask);
 }
 
-function createTask(task) {
-    const mainBlock = document.querySelector('.all-task');
-    mainBlock.style.display = 'block';
-    createTaskList(mainBlock,task);
-
-    dragDrop();
-
-}
-function deleteTask() {
-    const mainBlock = document.querySelector('.all-task');
-    mainBlock.addEventListener('click', function (event) {
-        if (!event.target.matches('.delete-purple')) return
-        event.target.parentNode.remove();
-        if (mainBlock.innerHTML == '') {
-            mainBlock.style.display = 'none';
-        }
-    })
-}
-
-function deleteValue() {
-    const deleteBtn = document.querySelector('.new-task .delete-purple');
-    deleteBtn.addEventListener('click', function(){
-        toDo.value = '';
-    })
-}
 
 function getDragElement(container, y){
     const draggableElements = [...container.querySelectorAll('.task:not(.dragging)')];
@@ -135,6 +135,7 @@ function dragDrop() {
     })
     
 }
+
 
 sortBtn.addEventListener('click', ()=>{   
         sortList();  
