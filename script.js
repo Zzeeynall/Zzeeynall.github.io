@@ -1,4 +1,4 @@
-let tasks = [];
+
 const toDo = document.querySelector('#new-toDo');
 const btn = document.querySelector('.btn');
 const sortBtn = document.querySelector('.sort');
@@ -6,7 +6,6 @@ const sortToStartBtn = document.querySelector('.sort-to-start');
 
 function addToList() {
     const newTask = toDo.value;
-    tasks.push(newTask)
     createTask(newTask);
     toDo.value = '';
 }
@@ -23,7 +22,6 @@ function sortList() {
     for(let task of sortedTasks){
         createTaskList(mainBlock, task.value);
     }
-    deleteTask();
     dragDrop();
 }
 
@@ -41,7 +39,6 @@ function sortToStart() {
     for(let task of sortedTasks){
         createTaskList(mainBlock, task.value);
     }
-    deleteTask();
     dragDrop();
 }
 
@@ -79,25 +76,19 @@ function createTask(task) {
     mainBlock.style.display = 'block';
     createTaskList(mainBlock,task);
 
-    deleteTask();
     dragDrop();
 
 }
-
 function deleteTask() {
-    const deleteBtn = document.querySelectorAll('.all-task .task .delete-purple');
-    deleteBtn.forEach(item => {
-        item.addEventListener('click', function (e) {
-            const mainBlock = document.querySelector('.all-task');
-            tasks = tasks.filter(t => t != e.target.nextSibling.value);
-            e.target.parentNode.remove();
-            if (mainBlock.innerHTML == '') {
-                mainBlock.style.display = 'none';
-            }
-        });
+    const mainBlock = document.querySelector('.all-task');
+    mainBlock.addEventListener('click', function (event) {
+        if (!event.target.matches('.delete-purple')) return
+        event.target.parentNode.remove();
+        if (mainBlock.innerHTML == '') {
+            mainBlock.style.display = 'none';
+        }
     })
 }
-
 
 function deleteValue() {
     const deleteBtn = document.querySelector('.new-task .delete-purple');
