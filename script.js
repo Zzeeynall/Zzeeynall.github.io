@@ -25,7 +25,7 @@ function sortList() {
     dragDrop();
 }
 
-function sortToStart() {
+function sortRandom() {
     sortToStartBtn.style.display = 'none';
     sortBtn.style.display = 'block';
 
@@ -96,7 +96,7 @@ function createTaskList(mainBlock,task){
     mainBlock.appendChild(blockTask);
 }
 
-
+//the following two functions are responsible for dragging and dropping a task in the to-do list
 function getDragElement(container, y){
     const draggableElements = [...container.querySelectorAll('.task:not(.dragging)')];
     return draggableElements.reduce((closest, child) => {
@@ -141,7 +141,7 @@ sortBtn.addEventListener('click', ()=>{
         sortList();  
 });
 sortToStartBtn.addEventListener('click', ()=>{   
-    sortToStart();  
+    sortRandom();  
 });
 btn.addEventListener('click', addToList);
 

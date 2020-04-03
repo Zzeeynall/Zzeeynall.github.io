@@ -26,7 +26,7 @@
 
 .caption{
     font-size: 30px;
-    font-weight: bold;
+    font-weight: 800;
     text-align: center;
     margin-top: 20px;
 }
@@ -167,7 +167,8 @@
 
 .btn{
     position: relative;
-    width: 276px;
+    width: 150px;
+    margin: 0 auto;
 }
 
 .circle{
@@ -175,7 +176,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: 64px;
+    left: 0px;
     border-radius: 50%;
     width: 40px;
     height: 40px;
