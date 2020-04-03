@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container{
@@ -125,7 +125,7 @@
 }
 
 .task.dragging{
-    background-color: yellow;
+    background-color: #FFDC40;
 }
 
 .task .dots{
@@ -159,6 +159,13 @@
 }
 
 .sort-to-start{
+    position: absolute;
+    right: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.sort-reverse{
     position: absolute;
     right: 0;
     display: none;

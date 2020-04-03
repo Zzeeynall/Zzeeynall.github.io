@@ -31,7 +31,8 @@ function sortRandom() {
 
     const inputTasks = document.querySelectorAll('[name=to-do]');
     const spreaded = [...inputTasks];
-    const sortedTasks = spreaded.sort(() => Math.random() - 0.5);
+    //const sortedTasks = spreaded.sort(() => Math.random() - 0.5);
+    const sortedTasks = spreaded.reverse();
     const mainBlock = document.querySelector('.all-task');
     mainBlock.innerHTML = '';
     for(let task of sortedTasks){
