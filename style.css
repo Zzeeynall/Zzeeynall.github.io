@@ -83,16 +83,9 @@
     cursor: pointer;
 }
 
-.new-task .delete:hover + img{
-    display: block;
-}
-
-.new-task .delete-purple{
-    display: none;
-    position: absolute;
-    top: 9px;
-    left: 250px;
-    cursor: pointer;
+.new-task .delete:hover{
+    background-color: #833AE0;
+    border-radius: 100%;
 }
 
 .sorting{
@@ -142,16 +135,10 @@
     cursor: pointer;
 }
 
-.task .delete:hover + img{
-    display: block;
-}
 
-.task .delete-purple{
-    display: none;
-    position: absolute;
-    top: 11px;
-    left: 250px;
-    cursor: pointer;
+.task .delete:hover{
+    background-color: #833AE0;
+    border-radius: 100%;
 }
 
 .sort{

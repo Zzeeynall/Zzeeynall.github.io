@@ -53,7 +53,7 @@ function createTask(task) {
 function deleteTask() {
     const mainBlock = document.querySelector('.all-task');
     mainBlock.addEventListener('click', function (event) {
-        if (!event.target.matches('.delete-purple')) return
+        if (!event.target.matches('.delete')) return
         event.target.parentNode.remove();
         if (mainBlock.innerHTML == '') {
             mainBlock.style.display = 'none';
@@ -62,7 +62,7 @@ function deleteTask() {
 }
 
 function deleteValue() {
-    const deleteBtn = document.querySelector('.new-task .delete-purple');
+    const deleteBtn = document.querySelector('.new-task .delete');
     deleteBtn.addEventListener('click', function(){
         toDo.value = '';
     })
@@ -71,29 +71,22 @@ function deleteValue() {
 function createTaskList(mainBlock,task){
     const blockTask = document.createElement('div');
     blockTask.classList.add('task');
-    blockTask.draggable = "true";
 
     const dot = document.createElement('img');
     dot.classList.add('dots');
     dot.src = "icons/dots.png";
+    dot.draggable = "true";
 
     const deleteX = document.createElement('img');
     deleteX.classList.add('delete');
     deleteX.src = "icons/grayX.png";
-
-    const purpleX = document.createElement('img');
-    purpleX.classList.add('delete-purple');
-    purpleX.src = "icons/pupleX.png";
 
     const taskName = document.createElement('input');
     taskName.value = task;
     taskName.type = "text";
     taskName.name = "to-do"
 
-    blockTask.appendChild(dot);
-    blockTask.appendChild(deleteX);
-    blockTask.appendChild(purpleX);
-    blockTask.appendChild(taskName);
+    blockTask.append(dot, deleteX, taskName);
     mainBlock.appendChild(blockTask);
 }
 
@@ -113,14 +106,14 @@ function getDragElement(container, y){
 
 function dragDrop() {
     const container = document.querySelector('.all-task');
-    const draggables = document.querySelectorAll('.task ');
+    const draggables = document.querySelectorAll('.dots ');
     draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', () => {
-            draggable.classList.add('dragging');
+            draggable.parentNode.classList.add('dragging');
         })
     
         draggable.addEventListener('dragend', () => {
-            draggable.classList.remove('dragging');
+            draggable.parentNode.classList.remove('dragging');
         })
     })
 
